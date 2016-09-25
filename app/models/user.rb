@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :role, presence: true
+
+  has_many :homeworks
 end

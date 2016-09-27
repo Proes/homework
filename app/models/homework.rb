@@ -17,4 +17,6 @@ class Homework < ActiveRecord::Base
   validates :creator, presence: true
 
   belongs_to :creator, foreign_key: "user_id", class_name: "User"
+  has_many :assignments, class_name: "Assignment"
+  has_many :submissions, through: :assignments
 end

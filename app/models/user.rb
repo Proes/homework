@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   validates :role, presence: true
 
   has_many :homeworks
+  has_many :assignments
+  has_many :submissions, through: :assignments
 end

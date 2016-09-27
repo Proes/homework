@@ -1,0 +1,23 @@
+%div
+  %h1
+    = @homework.title
+  = @homework.question
+
+  - if @submissions.blank?
+    No submissions yet.
+  - else
+    %table{ class: 'table' }
+      %tr
+        %th
+          Answer ID
+        %th
+          Answer
+      - @submissions.each do |s|
+        %tr
+          %td
+            = s.id
+          %td
+            = s.answer
+
+  - if !current_user.teacher?
+    = link_to 'New Answer', new_submission_path(assignment: {id: @assignment.id})

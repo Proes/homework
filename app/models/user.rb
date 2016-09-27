@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
   has_many :homeworks
   has_many :assignments
   has_many :submissions, through: :assignments
+
+  def teacher?
+    role == 'teacher'
+  end
 end

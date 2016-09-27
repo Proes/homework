@@ -1,0 +1,12 @@
+%table{ class: 'table' }
+  %tr
+    %th
+      User
+    %th
+      Latest Answer
+  - assignments.each do |a|
+    %tr
+      %td
+        = link_to a.user.username, assignment_path(a.id)
+      %td
+        = a.submissions.last.answer

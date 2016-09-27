@@ -1,0 +1,16 @@
+%div{ class: 'page-header'}
+  %h1
+    Homework
+%div{class: 'table-container'}
+  %table{ class: 'table' }
+    %tr
+      %th
+        Question
+      %th
+        Due Date
+    - @homeworks.each do |h|
+      %tr
+        %td
+          = link_to h.title, homework_path(h.id)
+        %td
+          = h.due_date

@@ -1,0 +1,8 @@
+%p
+  = "Question: #{@submission.question}"
+
+%br
+= form_for @submission, url: {action: "create"}, html: {class: "nifty_form"} do |f|
+  = f.text_field :answer
+  = f.hidden_field :assignment_id
+  = f.submit "Create"

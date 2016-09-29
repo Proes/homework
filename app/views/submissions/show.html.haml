@@ -1,3 +1,5 @@
 = render partial: "shared/homework_title", locals: {homework: @homework}
+= "Answer: #{@submission.answer}"
 %br
-= @submission.answer
+%br
+= link_to 'Return to Assignment', assignment_path(id: @submission.assignment.id)

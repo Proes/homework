@@ -9,6 +9,9 @@ class HomeworksController < ApplicationController
 
   def show
     @homework = Homework.find(params[:id])
+    unless current_user.teacher?
+      return redirect_to assignment_path(@homework.assignment_for_user(current_user).id)
+    end
     @assignments = current_user.role == 'student' ? student_assignments : all_assignments
   end
 

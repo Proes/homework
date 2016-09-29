@@ -10,6 +10,7 @@
 class Submission < ActiveRecord::Base
   validates :assignment, presence: true
   validates :answer, presence: true
+  validate :before_due_date
 
   belongs_to :assignment
   belongs_to :homework
@@ -17,4 +18,11 @@ class Submission < ActiveRecord::Base
   def homework
     assignment.homework
   end
+
+  private
+
+  def before_due_date
+    errors.add(:submission, "it's past the due date.") if Date.today > homework.due_date
+  end
+
 end

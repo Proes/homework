@@ -15,8 +15,11 @@ class SubmissionsController < ApplicationController
       flash[:notice] = "Submission saved!"
       redirect_to @submission
     else
-      flash[:error] = "Something went wrong. Please try again."
-      render :new
+      errors = @submission.errors.messages.map do |k,v|
+        ([k.to_s.capitalize] + v).join(': ')
+      end
+      flash[:error] = errors.join(', ')
+      redirect_to action: :new, assignment: {id: @submission.assignment_id}
     end
   end
 

@@ -1,10 +1,12 @@
 class SubmissionsController < ApplicationController
   def new
     @submission = Submission.new(assignment_id: params[:assignment][:id])
+    @homework = @submission.homework
   end
 
   def show
     @submission = Submission.find(params[:id])
+    @homework = @submission.homework
   end
 
   def create

@@ -1,8 +1,8 @@
-%table{ class: 'table' }
+%table{ class: 'table table-bordered table-striped' }
   %tr
-    %th
+    %th{ class: 'user-column' }
       User
-    %th
+    %th{ class: 'latest-answer-column' }
       Latest Answer
   - assignments.each do |a|
     %tr

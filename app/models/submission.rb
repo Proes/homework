@@ -12,8 +12,9 @@ class Submission < ActiveRecord::Base
   validates :answer, presence: true
 
   belongs_to :assignment
+  belongs_to :homework
 
-  def question
-    assignment.homework.question
+  def homework
+    assignment.homework
   end
 end

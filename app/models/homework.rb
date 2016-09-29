@@ -19,4 +19,8 @@ class Homework < ActiveRecord::Base
   belongs_to :creator, foreign_key: "user_id", class_name: "User"
   has_many :assignments, class_name: "Assignment"
   has_many :submissions, through: :assignments
+
+  def assignment_for_user(user)
+    assignments.where(user_id: user.id).first
+  end
 end

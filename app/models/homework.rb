@@ -20,6 +20,7 @@ class Homework < ActiveRecord::Base
   has_many :assignments, class_name: "Assignment"
   has_many :submissions, through: :assignments
 
+  #Find an assignment for the homework given a user
   def assignment_for_user(user)
     assignments.where(user_id: user.id).first
   end

@@ -28,5 +28,4 @@ class SubmissionsController < ApplicationController
   def submission_params
     params.require(:submission).permit(:assignment_id, :answer)
   end
-
 end

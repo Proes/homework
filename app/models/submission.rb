@@ -21,8 +21,8 @@ class Submission < ActiveRecord::Base
 
   private
 
+  # Error if the submission is after the due date
   def before_due_date
     errors.add(:submission, "it's past the due date.") if Date.today > homework.due_date
   end
-
 end

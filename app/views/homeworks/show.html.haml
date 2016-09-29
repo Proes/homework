@@ -1,8 +1,5 @@
 %div
-  %h1
-    = @homework.title
-  = @homework.question
-
+  = render partial: "shared/homework_title", locals: {homework: @homework}
   - if @assignments.blank?
     No submissions yet.
   - else

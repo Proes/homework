@@ -1,0 +1,19 @@
+%div{ class: 'page-header'}
+  %h1
+    Homework
+%div{class: 'table-container'}
+  %table{ class: 'table table-bordered table-striped' }
+    %tr
+      %th{ class: 'question-column'}
+        Question
+      %th{ class: 'due-date-column'}
+        Due Date
+    - @homeworks.each do |h|
+      %tr
+        %td
+          - if current_user.teacher?
+            = link_to h.title, homework_path(h.id)
+          - else
+            = link_to h.title, assignment_path(h.assignment_for_user(current_user).id)
+        %td
+          = h.due_date

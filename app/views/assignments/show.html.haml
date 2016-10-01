@@ -1,0 +1,23 @@
+%div
+  = render partial: "shared/homework_title", locals: {homework: @homework}
+  = "User: #{@assignment.user.username}"
+  %br
+  %br	
+  - if @submissions.blank?
+    No submissions yet.
+  - else
+    %table{ class: 'table table-bordered table-striped' }
+      %tr
+        %th{ class: 'answer-id-column' }
+          Answer ID
+        %th{ class: 'answer-column' }
+          Answer
+      - @submissions.each do |s|
+        %tr
+          %td
+            = s.id
+          %td
+            = s.answer
+
+  - if !current_user.teacher?
+    = link_to 'New Answer', new_submission_path(assignment: {id: @assignment.id}), class: 'btn btn-info', role: 'button'

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  username   :string           not null
+#  role       :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 FactoryGirl.define do
   factory :user do
     factory :teacher do

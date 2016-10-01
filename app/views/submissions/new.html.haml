@@ -1,0 +1,6 @@
+= render partial: "shared/homework_title", locals: {homework: @homework}
+%br
+= form_for @submission, url: {action: "create"}, html: {class: "nifty_form"} do |f|
+  = f.text_area :answer, class: 'answer-box'
+  = f.hidden_field :assignment_id
+  = f.submit 'Submit Answer', class: 'btn btn-primary btn-lg'

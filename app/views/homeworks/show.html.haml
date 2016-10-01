@@ -1,0 +1,7 @@
+%div
+  = render partial: "shared/homework_title", locals: {homework: @homework}
+  - if @assignments.blank?
+    No submissions yet.
+  - else
+    - if current_user.teacher?
+      = render partial: "teacher_submissions", locals: {assignments: @assignments }

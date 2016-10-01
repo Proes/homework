@@ -9,19 +9,13 @@ class HomeworksController < ApplicationController
 
   def show
     @homework = Homework.find(params[:id])
+    # This redirect is technically not necessary as it would be much better to just use
+    # some authorization system, and a student could still access other
+    # pages not intended for them. However this is just an example and
+    # an authorization system is out of the scope of this story.
     unless current_user.teacher?
       return redirect_to assignment_path(@homework.assignment_for_user(current_user).id)
     end
-    @assignments = current_user.role == 'student' ? student_assignments : all_assignments
-  end
-
-  private
-
-  def student_assignments
-    current_user.assignments
-  end
-
-  def all_assignments
-    @homework.assignments
+    @assignments = @homework.assignments
   end
 end
